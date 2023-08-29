@@ -22,7 +22,7 @@ lucaCart.changeAmount(3, 6)
 
 console.log(lucaCart.summary())
 
-const lucasSale = new Sale(lucaCart)
+const lucasSale: Sale = new Sale(lucaCart)
 
 console.log(lucasSale.close("credit"))
 console.log(lucasSale.close("debit"))

@@ -1,7 +1,7 @@
 import IProduct from "../interfaces/IProduct";
 
 export default class Product implements IProduct {
-  public id: number
+  public readonly id: number
   public description: string
   public category: string
   public value: number

@@ -16,16 +16,17 @@ export default class Sale {
   }
 
   public close(paymentMethod: paymentMethod): string {
-    let total: number = 0;
     const { totalValue } = this.cart.summary()
-    if (paymentMethod === 'debit') {
-      total = totalValue - (totalValue * this.debitPromoOfferIndex)
-    } else {
-      if (totalValue > this.creditPromoOfferBreakpoint) {
-        total = totalValue - (totalValue * this.creditPromoOfferIndex)
-      } else {
-        total = totalValue
-      }
+    let total: number = totalValue;
+    switch (paymentMethod) {
+      case 'debit':
+        total = totalValue - (totalValue * this.debitPromoOfferIndex)
+        break;
+      case 'credit':
+        if (totalValue > this.creditPromoOfferBreakpoint) {
+          total = totalValue - (totalValue * this.creditPromoOfferIndex)
+        }
+        break;
     }
 
     const formattedTotal = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
