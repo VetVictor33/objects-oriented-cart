@@ -1,6 +1,7 @@
 import Cart from "./classes/Cart";
 import Client from "./classes/Client";
 import Product from "./classes/Product";
+import Sale from "./classes/Sale";
 
 const luca: Client = { id: 1, name: 'Lukinha' }
 const lucaCart: Cart = new Cart(luca)
@@ -17,6 +18,11 @@ console.log(lucaCart.products)
 lucaCart.removeProduct(2)
 console.log(lucaCart.products)
 
-lucaCart.changeAmount(3, 100)
+lucaCart.changeAmount(3, 6)
 
 console.log(lucaCart.summary())
+
+const lucasSale = new Sale(lucaCart)
+
+console.log(lucasSale.close("credit"))
+console.log(lucasSale.close("debit"))
